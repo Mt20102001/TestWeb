@@ -1,0 +1,73 @@
+@using TestWeb.Controllers
+@using TestWeb.Models
+@model List<ProductModel>
+@{
+    Layout = "_Layouts";
+}
+@* @{
+    var product1 = new ProductModel();
+    product1.id = 3;
+    product1.Name = "Product 3";
+    product1.Available = false;
+    product1.Price = 12000;
+    product1.PromotionPrice = 3000;
+} *@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product Index</title>
+</head>
+
+<body>
+    @* <h1>@Model.Message</h1> *@
+    <table>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>Available</th>
+            <th>
+                Price
+            </th>
+            <th>Promotion Price</th>
+            <tr>
+                <thead>
+                <tbody>
+                            @{
+                                foreach (var product in Model)
+                                {
+                            <tr>
+                                <td>@product.id</td>
+                                <td>@product.Name</td>
+                                <td>@{
+                                        if(product.Available == true)
+                                        {
+                                            <strong>Available</strong>
+                                        }
+                                        else
+                                        {
+                                            <strong>Out Of Stock</strong>
+                                        }
+                                    }</td>
+                                <td>@product.Price</td>
+                                <td>@product.PromotionPrice</td>
+                            </tr>
+                                }
+                            }
+                </tbody>
+                </thead>
+            </tr>
+        </tr>
+    </table>
+    Total of products: @Model.Count
+    <script>alert("Welcome to The Web")</script>
+</body>
+
+</html>
